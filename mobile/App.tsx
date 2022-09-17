@@ -1,28 +1,33 @@
-import {StatusBar} from "react-native";
-import {Inter_400Regular, Inter_600SemiBold, Inter_700Bold, Inter_900Black, useFonts} from "@expo-google-fonts/inter";
+import { StatusBar } from "react-native";
+import {
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_900Black,
+  useFonts,
+} from "@expo-google-fonts/inter";
 
-import {Home} from "./src/screens/Home";
-import {Background} from "./src/components/Background";
-import {Loading} from "./src/components/Loading";
+import { Routes } from "./src/routes";
+import { Background } from "./src/components/Background";
+import { Loading } from "./src/components/Loading";
 
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_600SemiBold,
     Inter_700Bold,
-    Inter_900Black
-  })
+    Inter_900Black,
+  });
 
   return (
-      <Background>
+    <Background>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
 
-        <StatusBar barStyle="light-content"
-                   backgroundColor="transparent"
-                   translucent/>
-
-        {fontsLoaded ? <Home/> : <Loading/>}
-
-      </Background>
+      {fontsLoaded ? <Routes /> : <Loading />}
+    </Background>
   );
-};
+}
